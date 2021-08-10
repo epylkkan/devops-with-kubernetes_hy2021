@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: random
+  template:
+    metadata:
+      labels:
+        app: random
+    spec:
+      volumes:
+        - name: shared-pervol
+          persistentVolumeClaim:
+            claimName: pervol-claim
+      containers:
+        - name: random-creator
+          image: epylkkan/training_kubernetes_devops:110creator
+          volumeMounts: # Mount volume
+          - name: shared-pervol
+            mountPath: /usr/src/app/files
+        - name: random-reader
+          image: epylkkan/training_kubernetes_devops:111reader
+          volumeMounts: # Mount volume
+          - name: shared-pervol
+            mountPath: /usr/src/app/files

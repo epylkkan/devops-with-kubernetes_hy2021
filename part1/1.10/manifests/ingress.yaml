@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: random-vol-app
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /random
+        backend:
+          serviceName: random-vol-svc
+          servicePort: 2345
+          
