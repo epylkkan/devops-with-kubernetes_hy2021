@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: random-pong-ing
+  namespace: random-pong
+spec:
+  rules: 
+  - http:
+      paths: 
+      - path: /
+        backend:
+          serviceName: pingpong-np-svc
+          servicePort: 80
+      - path: /pingpong
+        backend:
+          serviceName: pingpong-np-svc
+          servicePort: 80
+      - path: /random
+        backend:
+          serviceName: random-np-svc
+          servicePort: 2345
+      - path: /
+        backend: 
+          serviceName: random-np-svc
+          servicePort: 2345
+          
+          

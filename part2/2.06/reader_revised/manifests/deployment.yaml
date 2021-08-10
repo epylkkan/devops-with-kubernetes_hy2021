@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random
+  namespace: random-pong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: random
+  template:
+    metadata:
+      labels:
+        app: random
+    spec:
+      containers:
+        - name: random-reader
+          image: epylkkan/training_kubernetes_devops:206reader
+          volumeMounts: # Mount volume
+          - name: node-env-file
+            mountPath: "/usr/src/app/dotenv"
+            readOnly: false
+      volumes:
+        - name: node-env-file
+          configMap:
+            name: node-configmap   
+          
+
