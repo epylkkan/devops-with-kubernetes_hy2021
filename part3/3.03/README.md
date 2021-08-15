@@ -63,3 +63,8 @@ Copy-paste helpers to minimize a need for typing:
 docker build . -t epylkkan/training_kubernetes_devops:303frontend
 docker push epylkkan/training_kubernetes_devops:303frontend
 
+-----------
+git add .
+git commit -m "update n"
+git push origin main
+
