@@ -18,8 +18,8 @@ on:
 env:
   GKE_CLUSTER: dwk-training-gke    # TODO: update to cluster name
   GKE_ZONE: europe-north1-c   # TODO: update to cluster zone
-  DEPLOYMENT_NAME: todo-frontend-patch # TODO: update to deployment name
-  IMAGE: todo-frontend
+  #DEPLOYMENT_NAME: todo-frontend-patch # TODO: update to deployment name
+  #IMAGE: todo-frontend
 
 jobs:
   setup-build-publish-deploy:
@@ -30,12 +30,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    #- uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
     #- uses: google-github-actions/setup-gcloud@master
-    #  with:
-    #    service_account_key: ${{ secrets.GKE_SA_KEY }}
-    #    project_id: ${{ secrets.GKE_PROJECT }}
-    #    export_default_credentials: true
+      with:
+        service_account_key: ${{ secrets.GKE_SA_KEY }}
+        project_id: ${{ secrets.GKE_PROJECT }}
+        export_default_credentials: true
 
     - run: gcloud --quiet auth configure-docker
 
