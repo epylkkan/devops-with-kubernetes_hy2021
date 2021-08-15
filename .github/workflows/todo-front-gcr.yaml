@@ -18,7 +18,6 @@ on:
 env:
   GKE_CLUSTER: dwk-training-gke    # TODO: update to cluster name
   GKE_ZONE: europe-north1-c   # TODO: update to cluster zone
-  GKE_PROJECT: dwk-training   # TODO: update to cluster zone
   #DEPLOYMENT_NAME: todo-frontend-patch # TODO: update to deployment name
   #IMAGE: todo-frontend
 
