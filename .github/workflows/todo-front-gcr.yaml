@@ -54,7 +54,7 @@ jobs:
 #   - run: gcloud config set account 511741098174-compute@developer.gserviceaccount.com
 #   - run: gcloud auth activate-service-account 511741098174-compute@developer.gserviceaccount.com --key-file=${{ secrets.GKE_SA_KEY }}
 
-    - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project ${{ secrets.GKE_PROJECT }}
+    - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
     - name: Build
       run: docker build --tag "$IMAGE_WITH_TAG" ./part3/3.03/frontend
