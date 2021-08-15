@@ -50,7 +50,7 @@ jobs:
         echo "IMAGE_WITH_TAG=gcr.io/${{ secrets.GKE_PROJECT }}/$B_IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA" >> $GITHUB_ENV
 
     - run: gcloud config set account 511741098174-compute@developer.gserviceaccount.com
-#    - run: gcloud auth login --no-launch-browser
+    - run: gcloud auth activate-service-account 511741098174-compute@developer.gserviceaccount.com
 
     - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project ${{ secrets.GKE_PROJECT }}
 
