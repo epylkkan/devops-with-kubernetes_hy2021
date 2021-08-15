@@ -19,6 +19,8 @@ env:
   GKE_CLUSTER: dwk-training-gke    # TODO: update to cluster name
   GKE_ZONE: europe-north1-c   # TODO: update to cluster zone
   DEPLOYMENT_NAME: todo-frontend-patch # TODO: update to deployment name
+  GKE_SA_KEY: ${{ env.GKE_SA_KEY }}
+  GKE_PROJECT: ${{ secrets.GKE_PROJECT }}
   IMAGE: todo-frontend
 
 jobs:
@@ -38,7 +40,7 @@ jobs:
     - uses: google-github-actions/setup-gcloud@master
       with:
         project_id: ${{ secrets.GKE_PROJECT }}
-#       service_account_key: ${{ secrets.GKE_SA_KEY }}
+        service_account_key: ${{ secrets.GKE_SA_KEY }}
         export_default_credentials: true
     
     - run: gcloud --quiet auth configure-docker
@@ -49,8 +51,8 @@ jobs:
       run: |-
         echo "IMAGE_WITH_TAG=gcr.io/${{ secrets.GKE_PROJECT }}/$B_IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA" >> $GITHUB_ENV
 
-    - run: gcloud config set account 511741098174-compute@developer.gserviceaccount.com
-    - run: gcloud auth activate-service-account 511741098174-compute@developer.gserviceaccount.com
+#   - run: gcloud config set account 511741098174-compute@developer.gserviceaccount.com
+#   - run: gcloud auth activate-service-account 511741098174-compute@developer.gserviceaccount.com --key-file=${{ secrets.GKE_SA_KEY }}
 
     - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project ${{ secrets.GKE_PROJECT }}
 

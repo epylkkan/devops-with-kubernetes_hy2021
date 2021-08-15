@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dwk-training",
+  "private_key_id": "66c66226e230bfe30a094a5305804ab19f201292",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDhmmWOSq0l55j2\nklZBv52oezjJWLUCSaYQobDfrS/+ZA4P9HTbcqhvoboRLksxSYzI2LITdgV6N0lB\nd1FPDUUaDWisNGaMptYkUZ6geZYR8Kk6scTSjKYhP0hikR8D9JBTWKxRIGNbVeOF\nCTg8w3Wi10oxvdpZJ7tCHG4IO/wamAJHC3V3TMj3QUHKPMQLKqMJUY4wdbUnQCvT\nuP8M54TLsn5N3n2CVKkB1RKWyyv0C1quiL541/fxU8+CoT2ZBr2gHNYzllhQwran\ngfyiK8ZO0OpK3VrYtd8FWey3Q4vrFiZwzeGL1dDVtqhVQqCWSZ5hmfpGjucu/55j\ns36KM9TrAgMBAAECggEADsT/Yg3kgQdE/dt9tyc2yJlskc3zZ7dvnkYfoL0jV7mw\nK/46ikVa3pgNaOOJe6wPgfShz+FZoXMuIhGQKqc5P2fiUufJUOr5OP547pOXLgx9\n38BUnN4lYCbW89EBYU5pBnPXMCZ5KrkYQJTmcB/xuxvyGQiPW2fc/AqFb5eRvSHX\n+Qmpat3yLSwUMOzxnygVPOk1P7uNgkfSchnPKkgC3kuokvn2YpMxaRp9vQ19WUiM\n92wvoqi3zTDAChUZhMuDjcPVWLk1yc4vmTw7YfXKXJ1O6BvtPKUkinROKI9M8Mrl\nj/3o5+GNpYbapaktbC63WAs0W3H7mr9mCM6mcuiFzQKBgQD/3aYS6vRmLAbeCUTU\nr66bzhIcdyJGv0fKfmQvB577T71wH9n5zvrqhxV/Skgaf8cJCbyYb/Hj4lHYA3i9\nxBTIERQOWUyRscJuyTYQxxJ57Cm4xfCIVXjt4/NOKEopr/EUnjsGLXsN9o4VB5+e\nLWrBOabG1/p8nOZrsiJRQtxmLwKBgQDhuK9f1Oh6eXguxPzqEiRTEXRb61ajjJ2d\nGBkZpNn3OQoYfnnbd9QPyZqPxqLYuYQeF+KrVuRSDsu3TindmrVgb1umrLMOm6lK\n2zvdKpgpEX8JVrF+MwX6UDf0CgJks58gY0wCQQA+w80gNI6wG5gJtimnFkCzcJhr\noho3TJgKBQKBgECPFJBBaFk/UpxDinJ/wXbekANOq/9d1CdrrKuRKLQQcqQP5Vf6\nuaTjYLE1dOv6waWuJz/vPwFY4X23ood/Kh8w7/aO4ZsBVyXM7y9ci3Tn+b79cqtz\npYegtItL7yqFkja5lfsBDsN/Kmpz+fpXS1Bl04boh/NZQ2p5D9+hFytRAoGAOA3Y\nJ3FFBl0x9lNfB3XX5XUZM1Z/HoBmB8QbP54LrvRQSILoGhNo6z7Cjl/iwvVXFO4T\nkT8z1hjsiCn2BZ1M25Tr6rlKgh8v7HIDLMpOHSzGIniP/WoIWwAe1RDDRWTB6JYg\nIxMnT27qesvyf1Nq70Z4k5DYInecsmYAIql3vE0CgYA1wqAAhWjKInkMdM9QOaNc\ncG3QAYw7xB5QagVm6R2YL4Yd0bSdWGwwO3xGBcc2Dnptb8vf8pqiIn7H9WTBkYH4\ncuPYh1Efdda0Anjj31WDLGfSYb3/KviUGAlUMzs7gzOh3L3rs9uPvXAGSsQbYqtk\n9on/mtMNPBHzUg6B+7OiRQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dwk-sa@dwk-training.iam.gserviceaccount.com",
+  "client_id": "110933403662955324497",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dwk-sa%40dwk-training.iam.gserviceaccount.com"
+}
