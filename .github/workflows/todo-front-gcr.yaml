@@ -38,8 +38,8 @@ jobs:
 #    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
     - uses: google-github-actions/setup-gcloud@v0.2.0
       with:
-        service_account_key: service_key
-        project_id: pr_id
+        service_account_key: "$service_key"
+        project_id: "$pr_id"
         export_default_credentials: true
 
     - run: gcloud --quiet auth configure-docker
