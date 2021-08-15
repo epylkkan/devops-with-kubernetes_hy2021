@@ -3,45 +3,31 @@ See, the picture for the end user view
 
 Cluster initialization:
 gcloud config set account epylkkan@gmail.com
-gcloud config set project dwk-gke
-gcloud config list account --format "value(core.account)"
+gcloud config set project dwk-training
+#gcloud config list account --format "value(core.account)"
 gcloud auth list
 gcloud auth login --no-launch-browser
 #gcloud auth login epylkkan@gmail.com
 
-Console: enable service:container.googleapis.com
-gcloud container clusters create dwk-cluster --zone=europe-north1-c --project=dwk-gke-321909
+Console: enable service:container.googleapis.com -Kubernetes Engined API
+gcloud container clusters create dwk-training-gke --zone=europe-north1-c --project=dwk-training
 or
-gcloud container clusters delete dwk-cluster --zone=europe-north1-c --project=dwk-gke-321909
+gcloud container clusters delete dwk-training-gke --zone=europe-north1-c --project=dwk-training
 
 kubectl create namespace todo
 kubectl get nodes --output wide
 
 
-Commands (note, postgre and pingpong backend are the same as in the exercise 2.10)
 
-./2.10/postgre
-kubectl create secret generic dbpw --from-file=/usr/src/app/dbpw -n random-pong
-kubectl apply -f manifests/persistentvolume.yaml -n random-pong
-kubectl apply -f manifests/postgre-statefulset.yaml -n random-pong
-kubectl apply -f manifests/postgresql-service.yaml -n random-pong
-kubectl apply -f manifests/postgresql-configmap.yaml -n random-pong
+Commands: 
 
-./2.10/backend
-kubectl apply -f manifests/deployment.yaml -n random-pong
-kubectl apply -f manifests/service.yaml -n random-pong
+kubectl create secret generic todopw --from-file=/usr/src/app/todopw -n todo
 
-./3.03/frontend
-kubectl apply -f manifests/deployment.yaml -n random-pong
-kubectl apply -f manifests/nodeport.yaml -n random-pong
-
-./2.10/wiki/
-kubectl apply -f manifests/deployment.yaml -n todo
-kubectl apply -f manifests/service.yaml -n todo
-kubectl apply -f manifests/cronjob.yaml -n todo
-
-./3.03:
-kubectl apply -f manifests/loadbalancer.yaml -n todo
+./3.03/postgre:  kubectl apply -k .
+./3.03/backend:  kubectl apply -k .
+./3.03/frontend:  kubectl apply -k .
+./3.03/wiki:  kubectl apply -k .
+./3.03:  kubectl apply -f manifests/loadbalancer.yaml -n todo
 
 
 /usr/src/app/todopw: 
