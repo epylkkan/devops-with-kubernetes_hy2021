@@ -3,16 +3,16 @@ See, the picture for the end user view
 
 Cluster initialization:
 gcloud config set account epylkkan@gmail.com
-gcloud config set project dwk-training
+gcloud config set project dwk-kubernetes
 #gcloud config list account --format "value(core.account)"
 gcloud auth list
 gcloud auth login --no-launch-browser
 #gcloud auth login epylkkan@gmail.com
 
 Console: enable service:container.googleapis.com -Kubernetes Engined API
-gcloud container clusters create dwk-training-gke --zone=europe-north1-c --project=dwk-training
+gcloud container clusters create dwk-kube --zone=europe-north1-c --project=dwk-kubernetes
 or
-gcloud container clusters delete dwk-training-gke --zone=europe-north1-c --project=dwk-training
+gcloud container clusters delete dwk-kube --zone=europe-north1-c --project=dwk-kubernetes
 
 kubectl create namespace todo
 kubectl get nodes --output wide
