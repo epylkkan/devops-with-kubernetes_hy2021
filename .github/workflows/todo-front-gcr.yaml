@@ -19,7 +19,7 @@ env:
   GKE_CLUSTER: dwk-training-gke    # TODO: update to cluster name
   GKE_ZONE: europe-north1-c   # TODO: update to cluster zone
   DEPLOYMENT_NAME: todo-frontend-patch # TODO: update to deployment name
-  GKE_SA_KEY: ${{ env.GKE_SA_KEY }}
+  GKE_SA_KEY: ${{ secrets.GKE_SA_KEY }}
   GKE_PROJECT: ${{ secrets.GKE_PROJECT }}
   IMAGE: todo-frontend
 
