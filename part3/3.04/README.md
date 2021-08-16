@@ -41,11 +41,11 @@ GitHub Actions (push)
 
 Not triggered by GuitHub Actions:
 
-kubectl create secret generic todopw --from-file=/usr/src/app/todopw -n todo
+kubectl create secret generic todopw --from-file=/usr/src/app/todopw -n main
 
 ./3.03/postgre:  kubectl apply -k .
 
-./3.03:  kubectl apply -f manifests/loadbalancer.yaml -n todo
+./3.03:  kubectl apply -f manifests/loadbalancer.yaml -n main
 
 --------------------
 
