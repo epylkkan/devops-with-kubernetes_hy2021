@@ -61,8 +61,11 @@ $ gcloud services enable containerregistry.googleapis.com container.googleapis.c
 $ gcloud iam service-accounts create $SA_NAME
 $ gcloud iam service-accounts list
 
-$ gcloud projects add-iam-policy-binding $GKE_PROJECT --member=serviceAccount:$SA_EMAIL \
-  --role=roles/container.admin --role=roles/storage.admin  --role=roles/container.clusterViewer
+$ gcloud projects add-iam-policy-binding dwk-kubernetes --member=serviceAccount:kube-sa@dwk-kubernetes.iam.gserviceaccount.com --role=roles/container.admin --role=roles/storage.admin  --role=roles/container.clusterViewer --role=roles/storage.buckets.create
 
 gcloud iam service-accounts keys create key.json --iam-account=$SA_EMAIL
 $ export GKE_SA_KEY=$(cat key.json | base64)
+
+--------
+
+gcloud projects add-iam-policy-binding dwk-kubernetes --member=serviceAccount:kube-sa@dwk-kubernetes.iam.gserviceaccount.com --role=roles/storage.buckets.create
