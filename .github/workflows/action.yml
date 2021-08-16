@@ -1,2 +1,0 @@
-name: Shared Setup
-uses: ./.github/actions/shared-setup

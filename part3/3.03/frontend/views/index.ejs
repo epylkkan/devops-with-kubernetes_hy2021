@@ -76,7 +76,7 @@
       function moveTask (event, id){
         const{name} = event.target;
 
-        fetch("http://34.88.129.187/moveTaskDone", {
+        fetch("http://34.88.251.185/moveTaskDone", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
@@ -95,7 +95,7 @@
       function deleteTask (event, id){
           const{name} = event.target;
     
-          fetch("http://34.88.129.187/deleteTask", {
+          fetch("http://34.88.251.185/deleteTask", {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json"

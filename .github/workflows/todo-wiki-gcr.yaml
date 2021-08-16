@@ -10,7 +10,7 @@
 #
 # For more support on how to run the workflow, please visit https://github.com/google-github-actions/setup-gcloud/tree/master/example-workflows/gke
 
-name: Build and Deploy Frontend to GKE
+name: Build and Deploy Wiki to GKE
 
 on:
   push: 
@@ -18,8 +18,8 @@ on:
 env:
   GKE_CLUSTER: dwk-kube    # TODO: update to cluster name
   GKE_ZONE: europe-north1-c   # TODO: update to cluster zone
-  DEPLOYMENT_NAME: todo-frontend-patch # TODO: update to deployment name
-  IMAGE: todo-frontend
+  DEPLOYMENT_NAME: todo-wiki-patch # TODO: update to deployment name
+  IMAGE: todo-wiki
 
 jobs:
   setup-build-publish-deploy:
@@ -49,7 +49,7 @@ jobs:
     
     - name: Build
       run: |-
-        cd ./master/part3/3.03/frontend
+        cd ./master/part3/3.03/wiki
         docker build --tag "$IMAGE_WITH_TAG" .
 
     - name: Publish
@@ -57,13 +57,13 @@ jobs:
 
     - name: Set up Kustomize
       run: |-
-        cd ./master/part3/3.03/frontend
+        cd ./master/part3/3.03/wiki
         curl -sfLo kustomize.tgz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.7.0/kustomize_v3.7.0_linux_amd64.tar.gz
         tar xf kustomize.tgz
         chmod u+x ./kustomize
         
     - name: Deploy
       run: |-
-        cd ./master/part3/3.03/frontend
+        cd ./master/part3/3.03/wiki
         ./kustomize edit set image PROJECT/IMAGE=$IMAGE_WITH_TAG
         kubectl apply -k .
