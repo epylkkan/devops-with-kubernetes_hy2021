@@ -39,7 +39,7 @@ GitHub Actions (push)
 
 --------------------
 
-Not triggered by GuitHub Actions:
+Not triggered by GuitHub Actions: 
 
 kubectl create secret generic todopw --from-file=/usr/src/app/todopw -n todo
 
