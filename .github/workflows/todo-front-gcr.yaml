@@ -49,8 +49,8 @@ jobs:
 
     - name: Change directory
       run: |-
-        ls -al
-        cd ./part3/3.03/frontend
+        ls -al ./master
+    #    cd ./part3/3.03/frontend
     
     - name: Build
       run: docker build --tag "$IMAGE_WITH_TAG" .
