@@ -46,14 +46,11 @@ jobs:
         echo "IMAGE_WITH_TAG=gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA" >> $GITHUB_ENV
 
     - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "${{ secrets.GKE_PROJECT }}"
-
-    - name: Change directory
-      run: |-
-        ls -al ./master/part3/3.03/frontend
-        cd ./master/part3/3.03/frontend
     
     - name: Build
-      run: docker build --tag "$IMAGE_WITH_TAG" .
+      run: |-
+        cd ./master/part3/3.03/frontend
+        docker build --tag "$IMAGE_WITH_TAG" .
 
     - name: Publish
       run: docker push "$IMAGE_WITH_TAG"
