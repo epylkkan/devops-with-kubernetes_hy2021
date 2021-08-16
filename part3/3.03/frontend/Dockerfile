@@ -3,7 +3,7 @@ FROM node:14-alpine
 
 WORKDIR /usr/src/app
 
-COPY front.js Dockerfile package-lock.json package.json .
+COPY front.js Dockerfile package-lock.json package.json ./
 COPY views ./views
 COPY public ./public
 
