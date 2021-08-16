@@ -55,18 +55,15 @@ jobs:
     - name: Publish
       run: docker push "$IMAGE_WITH_TAG"
 
-#        cd /master/part3/3.03/frontend
     - name: Set up Kustomize
       run: |-
         cd ./master/part3/3.03/frontend
         curl -sfLo kustomize.tgz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.7.0/kustomize_v3.7.0_linux_amd64.tar.gz
         tar xf kustomize.tgz
         chmod u+x ./kustomize
-
-#         
+        
     - name: Deploy
       run: |-
-        ls -al .
         cd ./master/part3/3.03/frontend
         ./kustomize edit set image PROJECT/IMAGE=$IMAGE_WITH_TAG
         kubectl apply -k .
