@@ -54,3 +54,15 @@ git add .
 git commit -m "update n"
 git push origin main
 
+-----------
+
+$ gcloud container clusters create $GKE_CLUSTER --project=$GKE_PROJECT --zone=$GKE_ZONE
+$ gcloud services enable containerregistry.googleapis.com container.googleapis.com
+$ gcloud iam service-accounts create $SA_NAME
+$ gcloud iam service-accounts list
+
+$ gcloud projects add-iam-policy-binding $GKE_PROJECT --member=serviceAccount:$SA_EMAIL \
+  --role=roles/container.admin --role=roles/storage.admin  --role=roles/container.clusterViewer
+
+gcloud iam service-accounts keys create key.json --iam-account=$SA_EMAIL
+$ export GKE_SA_KEY=$(cat key.json | base64)
