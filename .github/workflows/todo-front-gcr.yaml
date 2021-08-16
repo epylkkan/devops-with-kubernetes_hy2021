@@ -62,7 +62,7 @@ jobs:
         tar xf kustomize.tgz
         chmod u+x ./kustomize
 
-#        cd /master/part3/3.03/frontend
+#         cd /master/part3/3.03/frontend
     - name: Deploy
       run: |-
         ls -al .
