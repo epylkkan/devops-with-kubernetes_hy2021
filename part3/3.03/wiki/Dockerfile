@@ -3,7 +3,7 @@ FROM node:14-alpine
 
 WORKDIR /usr/src/app
 
-COPY wiki.js Dockerfile package-lock.json package.json .
+COPY wiki.js Dockerfile package-lock.json package.json ./
 
 RUN npm install axios --save && npm install request-promise --save
 

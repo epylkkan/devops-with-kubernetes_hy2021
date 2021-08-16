@@ -3,8 +3,7 @@ FROM node:14-alpine
 
 WORKDIR /usr/src/app
 
-COPY server.js Dockerfile package-lock.json package.json .
-#COPY views ./views
+COPY server.js Dockerfile package-lock.json package.json ./
 COPY public ./public
 
 #RUN apk update && apk install sqlite3
