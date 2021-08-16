@@ -33,8 +33,6 @@ jobs:
         repository: epylkkan/devops-with-kubernetes_hy2021
         path: master
 
-#     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-#    - uses: google-github-actions/setup-gcloud@v0.2.0
     - uses: google-github-actions/setup-gcloud@master
       with:
         project_id: ${{ secrets.GKE_PROJECT }}
@@ -43,11 +41,9 @@ jobs:
     
     - run: gcloud --quiet auth configure-docker
 
-#     - name: Create image name and tag
-#      run: echo "::set-env name=IMAGE_WITH_TAG::gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA"
     - name: Create image names
       run: |-
-        echo "IMAGE_WITH_TAG=gcr.io/${{ secrets.GKE_PROJECT }}/$B_IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA" >> $GITHUB_ENV
+        echo "IMAGE_WITH_TAG=gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA" >> $GITHUB_ENV
 
     - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "${{ secrets.GKE_PROJECT }}"
 
