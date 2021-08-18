@@ -35,9 +35,9 @@ $ gcloud projects add-iam-policy-binding dwk-kubernetes --member=serviceAccount:
 GitHub Actions (push)
 1) todo-front-gcr: uses ./3.03/frontend:  kubectl apply -k .
 2) todo-back-gcr:  uses ./3.03/backend:  kubectl apply -k .
-3) todo-wiki-gcr:  uses ./3.03/wiki:  kubectl apply -k .)
+3) todo-wiki-gcr:  uses ./3.03/wiki:  kubectl apply -k .
 
-Directories in the exercise 3.03 were cd ./master/part3/3.03/...
+Directories in the respective yaml-files were  "cd ./master/part3/3.03/..."
 
 These were added in the exercise 3.04 to the Deploy section:
 1) kubectl create namespace ${GITHUB_REF#refs/heads/} || true

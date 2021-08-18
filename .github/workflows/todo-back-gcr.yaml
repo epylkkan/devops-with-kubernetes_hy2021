@@ -49,7 +49,7 @@ jobs:
     
     - name: Build
       run: |-
-        cd ./master/part3/3.04/backend
+        cd ./master/part3/3.08/backend
         docker build --tag "$IMAGE_WITH_TAG" .
 
     - name: Publish
@@ -57,14 +57,14 @@ jobs:
 
     - name: Set up Kustomize
       run: |-
-        cd ./master/part3/3.04/backend
+        cd ./master/part3/3.08/backend
         curl -sfLo kustomize.tgz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.7.0/kustomize_v3.7.0_linux_amd64.tar.gz
         tar xf kustomize.tgz
         chmod u+x ./kustomize
         
     - name: Deploy
       run: |-
-        cd ./master/part3/3.04/backend
+        cd ./master/part3/3.08/backend
         kubectl create namespace ${GITHUB_REF#refs/heads/} || true
         kubectl config set-context --current --namespace=${GITHUB_REF#refs/heads/}
         ./kustomize edit set namespace ${GITHUB_REF#refs/heads/}  
