@@ -7,7 +7,6 @@ env:
   GKE_CLUSTER: dwk-kube    # TODO: update to cluster name
   GKE_ZONE: europe-north1-c   # TODO: update to cluster zone
   DEPLOYMENT_NAME: todo-delete # TODO: update to deployment name
-  #IMAGE: todo-front
 
 jobs:
   delete-from-GKE:
@@ -29,25 +28,8 @@ jobs:
     
     - run: gcloud --quiet auth configure-docker
 
-    #- name: Create image names
-    #  run: |-
-    #    echo "IMAGE_WITH_TAG=gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE:${GITHUB_REF#refs/heads/}-$GITHUB_SHA" >> $GITHUB_ENV
-
     - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "${{ secrets.GKE_PROJECT }}"
-    
-    #- name: Set up Kustomize
-    #  run: |-
-    #    cd ./master/part3/3.04/frontend
-    #    curl -sfLo kustomize.tgz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.7.0/kustomize_v3.7.0_linux_amd64.tar.gz
-    #    tar xf kustomize.tgz
-    #    chmod u+x ./kustomize
         
     - name: Delete
       run: |-
-        kubectl delete namespace ${GITHUB_REF#refs/heads/} || true
-#        cd ./master/part3/3.04/frontend
-#        kubectl config set-context --current --namespace=${GITHUB_REF#refs/heads/}
-#        ./kustomize edit set namespace ${GITHUB_REF#refs/heads/}        
-#        ./kustomize edit set image PROJECT/IMAGE=$IMAGE_WITH_TAG
-#        kubectl delete -k .
-        
+        kubectl delete namespace ${GITHUB_REF#refs/heads/} || true        
