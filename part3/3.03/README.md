@@ -37,6 +37,14 @@ GitHub Actions (push)
 2) todo-back-gcr:  uses ./3.03/backend:  kubectl apply -k .
 3) todo-wiki-gcr:  uses ./3.03/wiki:  kubectl apply -k .)
 
+Directories in the exercise 3.03 were cd ./master/part3/3.03/...
+
+These were added in the exercise 3.04 to the Deploy section:
+1) kubectl create namespace ${GITHUB_REF#refs/heads/} || true
+2) kubectl config set-context --current --namespace=${GITHUB_REF#refs/heads/}
+3) ./kustomize edit set namespace ${GITHUB_REF#refs/heads/} 
+
+
 --------------------
 
 Not triggered by GuitHub Actions: 

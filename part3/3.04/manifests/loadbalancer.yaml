@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: todo-app-with-frontend-and-backend
-  namespace: todo
+  namespace: main
 spec:
   type: LoadBalancer
   selector:

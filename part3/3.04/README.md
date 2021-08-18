@@ -2,61 +2,21 @@ General:  See, the pictures
 
 --------------------
 
-Cluster initialization:
+Changes to 3.03
 
-$ gcloud config set account epylkkan@gmail.com
+Added to Deploy-section in todo-front-gcr.yaml, todo-back-gcr.yaml, todo-wiki-gcr.yaml in .github/workflows:
 
-$ gcloud config set project dwk-kubernetes
-
-$ gcloud auth list
-
-$ gcloud auth login --no-launch-browser
-
-$ gcloud container clusters create dwk-kube --zone=europe-north1-c --project=dwk-kubernetes
-or
-$ gcloud container clusters delete dwk-kube --zone=europe-north1-c --project=dwk-kubernetes
-
-$ kubectl create namespace todo
-
-$ kubectl get nodes --output wide
-
-$ gcloud container clusters create $GKE_CLUSTER --project=$GKE_PROJECT --zone=$GKE_ZONE
-
-$ gcloud services enable containerregistry.googleapis.com container.googleapis.com
-
-$ gcloud iam service-accounts create $SA_NAME
-
-$ gcloud iam service-accounts list
-
-$ gcloud projects add-iam-policy-binding dwk-kubernetes --member=serviceAccount:kube-sa@dwk-kubernetes.iam.gserviceaccount.com --role=roles/container.admin --role=roles/storage.admin  --role=roles/container.clusterViewer  --role=roles/container.serviceAgent
+1) kubectl create namespace ${GITHUB_REF#refs/heads/} || true
+2) kubectl config set-context --current --namespace=${GITHUB_REF#refs/heads/}
+3) ./kustomize edit set namespace ${GITHUB_REF#refs/heads/} 
 
 --------------------
 
-GitHub Actions (push)
-1) todo-front-gcr: uses ./3.03/frontend:  kubectl apply -k .
-2) todo-back-gcr:  uses ./3.03/backend:  kubectl apply -k .
-3) todo-wiki-gcr:  uses ./3.03/wiki:  kubectl apply -k .)
-
---------------------
-
-Not triggered by GuitHub Actions:
+Need to run separately for 3.04:
 
 kubectl create secret generic todopw --from-file=/usr/src/app/todopw -n main
 
-./3.03/postgre:  kubectl apply -k .
+./3.04/postgre:  kubectl apply -k .
 
-./3.03:  kubectl apply -f manifests/loadbalancer.yaml -n main
+./3.04:   kubectl apply -f manifests/loadbalancer.yaml
 
---------------------
-
-Copy-paste helpers to minimize a need for typing:
-
-$ gcloud iam service-accounts keys create key.json --iam-account=$SA_EMAIL
-
-$ export GKE_SA_KEY=$(cat key.json | base64)
-
-git add .
-
-git commit -m "update n"
-
-git push origin main
