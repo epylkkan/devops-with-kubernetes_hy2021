@@ -18,7 +18,7 @@ kubectl apply -f manifests/ingress.yaml
 
 
 
-Copy-paste helpers to minimize a need for typing:
+<h2> Copy-paste helpers to minimize a need for typing: </h2> 
 
 docker build . -t epylkkan/training_kubernetes_devops:112-113
 

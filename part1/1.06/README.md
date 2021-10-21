@@ -1,4 +1,3 @@
-# nodejs-todoList
 
 k3d cluster delete
 
