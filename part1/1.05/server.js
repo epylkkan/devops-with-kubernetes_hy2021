@@ -21,6 +21,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
 
   console.log('get')
+  res.render("index");
 /*
   const sql = "SELECT * FROM todo ORDER BY id;";
     db.all(sql, (err, rows) =>  {

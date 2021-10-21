@@ -2,13 +2,15 @@ FROM node:14-alpine
 
 WORKDIR /usr/src/app
 COPY . .
-COPY server.js README.md todo_list.db Dockerfile package-lock.json package.json .
-COPY views public .
-COPY server.js .
+#COPY server.js README.md todo_list.db Dockerfile package-lock.json package.json ./
+COPY server.js README.md Dockerfile package-lock.json package.json ./
+COPY views public ./
+COPY server.js ./
 
 #COPY package* ./
 
 RUN apk update && apk add --no-cache npm nodejs
+RUN npm install express --save
 
 #RUN npm ci
 

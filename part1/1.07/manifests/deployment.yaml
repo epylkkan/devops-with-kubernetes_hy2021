@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: random
-          image: epylkkan/training_kubernetes_devops:101
+          image: epylkkan/training_kubernetes_devops:107random

@@ -10,3 +10,7 @@ spec:
         backend:
           serviceName: randomstring-svc
           servicePort: 2345
+      - path: /random
+        backend:
+          serviceName: randomstring-svc
+          servicePort: 2345
