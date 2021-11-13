@@ -1,4 +1,3 @@
-General: 
 <h2>GENERAL</h2>
 
 See, the picture for the end user view
