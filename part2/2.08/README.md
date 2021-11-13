@@ -52,16 +52,6 @@ kubectl apply -f manifests/service.yaml -n todo
 kubectl apply -f manifests/ingress.yaml -n todo
 
 
-ConfigMap: 
-
-  POSTGRES_DB: tododb
-
-  POSTGRES_USER: todo
-
-  PGDATA: /data/pgdata
-
-Host:'postgres-db-lb'  
-
 
 <h4>Copy-paste helpers to minimize a need for typing</h4>
 

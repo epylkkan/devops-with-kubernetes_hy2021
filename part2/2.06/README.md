@@ -1,5 +1,5 @@
 General: 
-<h2>General</h2>
+<h2>GENERAL</h2>
 
 See, the picture for the end user view
 
