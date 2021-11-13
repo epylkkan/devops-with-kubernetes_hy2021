@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-back
+  namespace: todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-back
+  template:
+    metadata:
+      labels:
+        app: todo-back
+    spec:
+      containers:
+        - name: todo
+          image: epylkkan/training_kubernetes_devops:208-2backend
+          envFrom:
+            - secretRef:
+                name: todopw
+            - configMapRef:
+                name: postgres-db-config
+ 

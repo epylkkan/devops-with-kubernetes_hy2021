@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dbpw
+  namespace: random-pong
+type: Opaque
+data:  
+  POSTGRES_PASSWORD: cG9uZw==

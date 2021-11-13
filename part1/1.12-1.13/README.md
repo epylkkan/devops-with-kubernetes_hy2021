@@ -1,4 +1,9 @@
-<h2>Commands:</h2> 
+<h2>General</h2>
+
+SQLite is used as a database
+
+
+<h4>Commands</h4> 
 
 k3d cluster delete
 
@@ -18,7 +23,7 @@ kubectl apply -f manifests/ingress.yaml
 
 
 
-<h2> Copy-paste helpers to minimize a need for typing: </h2> 
+<h4> Copy-paste helpers to minimize a need for typing: </h4> 
 
 docker build . -t epylkkan/training_kubernetes_devops:112-113
 
