@@ -14,7 +14,7 @@ kubectl create namespace todo
 
 <h2>COMMAND</h2>
 
-<h2>./2.09/wiki</h2>
+<h4>./2.09/wiki</h4>
 
 kubectl apply -f manifests/deployment.yaml -n todo
 
@@ -23,7 +23,7 @@ kubectl apply -f manifests/service.yaml -n todo
 kubectl apply -f manifests/cronjob.yaml -n todo
 
 
-<h2>./2.09</h2>
+<h4>./2.09</h4>
 
 kubectl apply -f manifests/ingress.yaml -n todo
 
@@ -31,7 +31,7 @@ kubectl apply -f manifests/ingress.yaml -n todo
 
 
 
-<h2>Copy-paste helpers to minimize a need for typing</h2>
+<h4>Copy-paste helpers to minimize a need for typing</h4>
 
 docker build . -t epylkkan/training_kubernetes_devops:209wiki
 

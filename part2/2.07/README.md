@@ -1,5 +1,5 @@
 
-<h4> General </h4> 
+<h2>GENERAL</h2> 
 
 See, the pictures before and after shutting down pods
 
@@ -13,7 +13,7 @@ k3d cluster create --port '8082:30080@agent[0]' -p 8081:80@loadbalancer --agents
 kubectl create namespace random-pong
 
 
-<h4>Commands</h4>
+<h2>COMMANDS</h2>
 
 <h4>./2.07/postgre</h4>
 
@@ -48,8 +48,6 @@ kubectl apply -f manifests/service.yaml -n random-pong
 
 kubectl apply -f manifests/ingress.yaml -n random-pong
 
-
-Host:'postgres-db-lb'  
 
 
 <h4>Copy-paste helpers to minimize a need for typing</h4>

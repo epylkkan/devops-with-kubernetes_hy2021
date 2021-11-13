@@ -1,4 +1,4 @@
-<h4>GENERAL</h4>
+<h2>GENERAL</h2>
 
 - Pre-populated SQLite used in the earlier exercises was replaced by PostgreSQL (+ some minor improvements)
 
@@ -7,7 +7,7 @@
 - See, the picture
 
 
-<h4>Cluster initialization</h4>
+<h2>Cluster initialization</h2>
 
 k3d cluster delete
 
@@ -41,7 +41,7 @@ http://loki.loki-stack:3100
 Otherwise as in the exercise 2.09 
 
 
-<h4>Copy-paste helpers to minimize a need for typing</h4>
+<h2>Copy-paste helpers to minimize a need for typing</h2>
 
 docker build . -t epylkkan/training_kubernetes_devops:210backend
 

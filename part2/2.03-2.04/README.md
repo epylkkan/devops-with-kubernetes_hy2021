@@ -1,9 +1,9 @@
-<h2> General </h2>
+<h2>GENERAL</h2>
 
 See, the picture.
 
 
-<h4> Commands </h4>
+<h2>COMMANDS</h2>
 
 kubectl create namespace todo
 
@@ -14,7 +14,7 @@ kubectl create namespace random-pong
 <h4>Added to deployment.yaml-files + re-deployed</h4>
 
 
-<h6>todo</h6>
+<h4>todo</h4>
 
 ./todo/frontend/manifests/deployment.yaml
 
@@ -34,14 +34,8 @@ metadata:
   namespace: todo
 
 
-metadata:
 
-  name: pingpong
-
-  namespace: todo
-
-
-<h6>pingpong and random</h6>
+<h4>pingpong and random</h4>
 
 ./random-pong/reader_revised/manifests/deployment.yaml
 

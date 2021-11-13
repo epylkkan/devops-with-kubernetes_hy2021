@@ -1,4 +1,4 @@
-<h4>GENERAL</h4>
+<h2>GENERAL</h2>
 
 - Pre-populated SQLite used in the earlier exercises was replaced by PostgreSQL (+ some minor improvements)
 
@@ -16,11 +16,11 @@ k3d cluster create --port '8082:30080@agent[0]' -p 8081:80@loadbalancer --agents
 kubectl create namespace todo
 
 
-<h4>COMMANDS</h4>
+<h2>COMMANDS</h2>
 
 <h4>./2.08/postgre</h4>
 
-echo -n 'todo' | base64 results to 'dG9kbw=='   # db password is 'pong' which you can read from here :-)
+echo -n 'todo' | base64 results to 'dG9kbw=='   # db password is 'todo' which you can read from here :-)
 
 kubectl apply -f manifests/todopw.yaml -n todo
 
