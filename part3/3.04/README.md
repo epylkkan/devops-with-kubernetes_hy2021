@@ -3,9 +3,20 @@
 
 GitHub Actions need to be manually run (on workflow_dispatch:) in order to deploy new backend / frontend / wiki in the namespace "todo"
 
-$ kubectl create namespace todo (new namespace is created in advance)
+Namespace "todo" is created in advance.  Database and loadbalancer are launcehed as described below.
+
+$ kubectl create namespace todo 
 
 See, the pictures
+
+
+<h4>Database and loadbalancer</h4>
+
+echo -n 'todo' | base64 results to 'dG9kbw=='   # db password is 'todo'
+
+./3.04/postgre:  kubectl apply -k .
+
+./3.04:  kubectl apply -f manifests/loadbalancer.yaml
 
 
 
@@ -32,11 +43,3 @@ Added to todo-front-gcr-namespace_todo.yaml, todo-back-gcr-namespace_todo.yaml, 
 .github/workflows: directories in the yaml-files were  "cd ./master/part3/3.04/..."
 
 
-
-<h4>Database and loadbalancer</h4>
-
-echo -n 'todo' | base64 results to 'dG9kbw=='   # db password is 'todo'
-
-./3.04/postgre:  kubectl apply -k .
-
-./3.04:  kubectl apply -f manifests/loadbalancer.yaml
