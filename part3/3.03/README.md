@@ -2,12 +2,13 @@
 
 See, the pictures
 
+Deploy to the namespace "main" 
 
 Cluster initialization:
 
 See, the exercise 3.01
 
-$ kubectl create namespace todo
+$ kubectl create namespace main
 
 $ kubectl get nodes --output wide
 
@@ -30,11 +31,11 @@ $ gcloud projects add-iam-policy-binding dwk-kubernetes --member=serviceAccount:
 
 <h4>GitHub Actions (push)</h4>
 
-1) todo-front-gcr: uses ./3.03/frontend:  kubectl apply -k .
+1) todo-front-gcr: uses ./3.03/frontend
 
-2) todo-back-gcr:  uses ./3.03/backend:  kubectl apply -k .
+2) todo-back-gcr:  uses ./3.03/backend
 
-3) todo-wiki-gcr:  uses ./3.03/wiki:  kubectl apply -k .
+3) todo-wiki-gcr:  uses ./3.03/wiki
 
 
 Directories in the respective yaml-files were  "cd ./master/part3/3.03/..."
@@ -46,7 +47,7 @@ echo -n 'todo' | base64 results to 'dG9kbw=='   # db password is 'todo'
 
 ./3.03/postgre:  kubectl apply -k .
 
-./3.03:  kubectl apply -f manifests/loadbalancer.yaml -n todo
+./3.03:  kubectl apply -f manifests/loadbalancer.yaml
 
 
 <h4>Added in the exercise 3.04 to the Deploy section</h4>

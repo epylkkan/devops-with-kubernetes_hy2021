@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: postgresql-db-pv
-  namespace: todo
+  namespace: main
 spec:
   storageClassName: manual
   persistentVolumeReclaimPolicy: Retain
