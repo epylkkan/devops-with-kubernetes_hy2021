@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: todopw
-  namespace: main
-type: Opaque
-data:  
-  POSTGRES_PASSWORD: dG9kbw==
