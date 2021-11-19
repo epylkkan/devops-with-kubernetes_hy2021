@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgresql-db
-  namespace: main
+  namespace: todo
 spec:
   serviceName: postgresql-db-service
   selector:
