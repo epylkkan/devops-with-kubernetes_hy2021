@@ -19,15 +19,9 @@ gcloud auth login epylkkan@gmail.com
 Console: enable service:container.googleapis.com
 or gcloud services enable container.googleapis.com
 
-(gcloud container clusters create dwk-cluster --zone=europe-north1-b --project=dwk-gke-321909)
-
-gcloud container clusters create dwk-cluster --zone=europe-north1-b --release-channel=rapid --cluster-version=1.22
-
-(gcloud container clusters delete dwk-cluster --zone=europe-north1-b --project=dwk-gke-321909)
+gcloud container clusters create dwk-cluster --zone=europe-north1-b --release-channel=rapid --cluster-version=1.22  or
 
 gcloud container clusters delete dwk-cluster --zone=europe-north1-b --release-channel=rapid --cluster-version=1.22
-
-(gcloud container clusters get-credentials dwk-cluster --zone=europe-north1-b)
 
 kubectl create namespace random-pong
 
