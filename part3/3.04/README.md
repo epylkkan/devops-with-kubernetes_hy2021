@@ -15,4 +15,5 @@ Added to Deploy-section in todo-front-gcr.yaml, todo-back-gcr.yaml, todo-wiki-gc
 
 .github/workflows: directories in the yaml-files were  "cd ./master/part3/3.04/..."
 
+4) ./postgre/manifests:  k apply -f todopw_main.yaml    (creates the secret with the pw in the namespace main)
 
