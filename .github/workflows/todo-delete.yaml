@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     
 env:
-  GKE_CLUSTER: dwk-kube    # TODO: update to cluster name
+  GKE_CLUSTER: dwk-cluster    # TODO: update to cluster name
   GKE_ZONE: europe-north1-b   # TODO: update to cluster zone
   DEPLOYMENT_NAME: todo-delete # TODO: update to deployment name
 
