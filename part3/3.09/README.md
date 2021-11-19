@@ -4,7 +4,7 @@ Resource limits added to all the deployment.yaml-files
 
 horizontalpodautoscalere.yaml-files were added as described below under the Commands-section
 
-See, the picture for the end user view
+See, the picture.
 
 
 <h2>COMMANDS</h2>
