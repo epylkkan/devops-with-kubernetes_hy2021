@@ -11,11 +11,16 @@ $ kubectl create namespace todo
 
 $ kubectl get nodes --output wide
 
-$ gcloud container clusters create $GKE_CLUSTER --project=$GKE_PROJECT --zone=$GKE_ZONE
+$ gcloud iam service-accounts create $SA_NAME (=kube-sa -> kube-sa@dwk-kubernetes.iam.gserviceaccount.com)
 
-$ gcloud services enable containerregistry.googleapis.com container.googleapis.com
+$ gcloud iam service-accounts keys create key.json --iam-account=$SA_EMAIL (kube-sa@dwk-kubernetes.iam.gserviceaccount.com)
 
-$ gcloud iam service-accounts create $SA_NAME
+
+Upload the key: 
+
+ https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+
+ https://docs.github.com/en/actions/security-guides/encrypted-secrets
 
 $ gcloud iam service-accounts list
 
@@ -53,8 +58,6 @@ echo -n 'todo' | base64 results to 'dG9kbw=='   # db password is 'todo'
 3) ./kustomize edit set namespace ${GITHUB_REF#refs/heads/} 
 
 
-<h4>Copy-paste helpers to minimize a need for typing</h4>
-
-$ gcloud iam service-accounts keys create key.json --iam-account=$SA_EMAIL
+<h4>Helpers</h4>
 
 $ export GKE_SA_KEY=$(cat key.json | base64)
