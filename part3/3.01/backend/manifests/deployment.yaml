@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pong-back
+  namespace: random-pong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pong-back
+  template:
+    metadata:
+      labels:
+        app: pong-back
+    spec:
+      containers:
+        - name: pong-back
+          image: epylkkan/training_kubernetes_devops:207-1backend
+          envFrom:
+            - secretRef:
+                name: dbpw
+            - configMapRef:
+                name: postgres-db-config

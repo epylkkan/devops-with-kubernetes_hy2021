@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random
+  namespace: random-pong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: random
+  template:
+    metadata:
+      labels:
+        app: random
+    spec:
+      containers:
+        - name: random-reader
+          image: epylkkan/training_kubernetes_devops:302-15reader
+          envFrom:
+            - configMapRef:
+                name: node-configmap          
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"
+
+
+          
+

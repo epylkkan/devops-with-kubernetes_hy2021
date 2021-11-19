@@ -1,0 +1,10 @@
+# PostgreSQL StatefulSet ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-configmap
+  namespace: random-pong
+  labels:
+    app: random
+data:
+  MESSAGE: Hello

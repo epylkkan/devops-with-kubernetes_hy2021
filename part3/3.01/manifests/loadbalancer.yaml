@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pong-with-db
+  namespace: random-pong
+spec:
+  type: LoadBalancer # This should be the only unfamiliar part
+  selector:
+    app: pong-front
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000

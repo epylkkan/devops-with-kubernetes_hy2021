@@ -1,0 +1,12 @@
+# PostgreSQL StatefulSet ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-db-config
+  namespace: random-pong
+  labels:
+    app: postgresql-db
+data:
+  POSTGRES_DB: pongdb
+  POSTGRES_USER: pong
+  PGDATA: /data/pgdata
