@@ -40,7 +40,7 @@ $ gcloud projects add-iam-policy-binding dwk-kubernetes --member=serviceAccount:
 Directories in the respective yaml-files were  "cd ./master/part3/3.03/..."
 
 
-<h4>Database and loadbalancer are triggered by GuitHub Actions</h4>
+<h4>Database and loadbalancer</h4>
 
 echo -n 'todo' | base64 results to 'dG9kbw=='   # db password is 'todo'
 
