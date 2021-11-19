@@ -1,0 +1,73 @@
+# This workflow will build a docker container, publish it to Google Container Registry, and deploy it to GKE when a release is created
+#
+# To configure this workflow:
+#
+# 1. Ensure that your repository contains the necessary configuration for your Google Kubernetes Engine cluster, including deployment.yml, kustomization.yml, service.yml, etc.
+#
+# 2. Set up secrets in your workspace: GKE_PROJECT with the name of the project and GKE_SA_KEY with the Base64 encoded JSON service account key (https://github.com/GoogleCloudPlatform/github-actions/tree/docs/service-account-key/setup-gcloud#inputs).
+#
+# 3. Change the values for the GKE_ZONE, GKE_CLUSTER, IMAGE, and DEPLOYMENT_NAME environment variables (below).
+#
+# For more support on how to run the workflow, please visit https://github.com/google-github-actions/setup-gcloud/tree/master/example-workflows/gke
+
+name: Build and Deploy Frontend to GKE
+
+on:
+  workflow_dispatch:
+  
+env:
+  GKE_CLUSTER: dwk-cluster    # TODO: update to cluster name
+  GKE_ZONE: europe-north1-b   # TODO: update to cluster zone
+  DEPLOYMENT_NAME: todo-frontend-patch # TODO: update to deployment name
+  IMAGE: todo-front
+  NAMESPACE: todo
+
+jobs:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy 
+    runs-on: ubuntu-latest
+
+    steps:    
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        repository: epylkkan/devops-with-kubernetes_hy2021
+        path: master
+
+    - uses: google-github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ secrets.GKE_PROJECT }}
+        service_account_key: ${{ secrets.GKE_SA_KEY }}
+        export_default_credentials: true
+    
+    - run: gcloud --quiet auth configure-docker
+
+    - name: Create image names
+      run: |-
+        echo "IMAGE_WITH_TAG=gcr.io/${{ secrets.GKE_PROJECT }}/$IMAGE:$NAMESPACE-$GITHUB_SHA" >> $GITHUB_ENV
+
+    - run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "${{ secrets.GKE_PROJECT }}"
+    
+    - name: Build
+      run: |-
+        cd ./master/part3/3.08/frontend
+        docker build --tag "$IMAGE_WITH_TAG" .
+
+    - name: Publish
+      run: docker push "$IMAGE_WITH_TAG"
+
+    - name: Set up Kustomize
+      run: |-
+        cd ./master/part3/3.08/frontend
+        curl -sfLo kustomize.tgz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.7.0/kustomize_v3.7.0_linux_amd64.tar.gz
+        tar xf kustomize.tgz
+        chmod u+x ./kustomize
+        
+    - name: Deploy
+      run: |-
+        cd ./master/part3/3.08/frontend
+        kubectl config set-context --current --namespace=$NAMESPACE
+        ./kustomize edit set namespace $NAMESPACE
+        ./kustomize edit set image PROJECT/IMAGE=$IMAGE_WITH_TAG
+        kubectl apply -k .
+        kubectl rollout status deployment $IMAGE
