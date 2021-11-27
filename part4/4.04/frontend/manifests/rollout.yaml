@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: todo-front
+  namespace: todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-front
+  strategy:
+    canary:
+      steps:
+      - setWeight: 50
+      - analysis:
+          templates:
+          - templateName: cpu        
+  template:
+    metadata:
+      labels:
+        app: todo-front
+    spec:
+      containers:
+        - name: todo-front
+          image: PROJECT/IMAGE
+          readinessProbe:
+           failureThreshold: 3
+           successThreshold: 1
+           timeoutSeconds: 1
+           initialDelaySeconds: 15
+           periodSeconds: 60
+           httpGet:
+             path: /healthz
+             port: 3000       
+          livenessProbe:
+           initialDelaySeconds: 20 # Initial delay until the liveness is tested
+           periodSeconds: 5 # How often to test
+           httpGet:
+             path: /healthz
+             port: 3000
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"

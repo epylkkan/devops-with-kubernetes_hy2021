@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pong-front-svc
+  namespace: random-pong
+spec:
+  type: ClusterIP
+  selector:
+    app: pong-front
+  ports:
+    - port: 2345
+      name: pong-front
+      protocol: TCP
+      targetPort: 3000

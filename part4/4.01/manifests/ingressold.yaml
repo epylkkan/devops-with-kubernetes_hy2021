@@ -1,4 +1,3 @@
-#apiVersion: extensions/v1beta1
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -12,28 +11,21 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: pingpong-np-svc
+            name: pong-front-svc
             port: 
-              number: 80
+              number: 8081
       - path: /pingpong
         pathType: Prefix
         backend:
           service:
-            name: pingpong-np-svc
+            name: pong-front-svc
             port: 
-              number: 80
+              number: 8081
       - path: /random
         pathType: Prefix
         backend:
           service:
-            name: random-np-svc
+            name: random-svc
             port: 
-              number: 2345
-      - path: /
-        pathType: Prefix
-        backend: 
-          service:
-            name: random-np-svc
-            port: 
-              number: 2345
+              number: 2347
       

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-back
+  namespace: todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-back
+  template:
+    metadata:
+      labels:
+        app: todo-back
+    spec:
+      containers:
+        - name: todo
+          image: PROJECT/IMAGE
+          readinessProbe:
+           initialDelaySeconds: 10
+           periodSeconds: 5
+           httpGet:
+             path: /healthz
+             port: 3002          
+          livenessProbe:
+            initialDelaySeconds: 20 # Initial delay until the liveness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+               path: /healthz
+               port: 3002
+          envFrom:
+            - secretRef:
+                name: todopw  #use first 'falsepw' then change to todopw
+            - configMapRef:
+                name: postgres-db-config
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"

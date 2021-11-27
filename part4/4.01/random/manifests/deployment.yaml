@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random
+  namespace: random-pong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: random
+  template:
+    metadata:
+      labels:
+        app: random
+    spec:
+      containers:
+        - name: random-reader
+          image: epylkkan/training_kubernetes_devops:401reader
+          envFrom:
+            - configMapRef:
+                name: node-configmap          
+          readinessProbe:
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 1
+            initialDelaySeconds: 15
+            periodSeconds: 60
+            httpGet:
+              path: /healthz
+              port: 3003
+
+          
+
