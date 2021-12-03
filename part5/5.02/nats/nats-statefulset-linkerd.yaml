@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    component: nats
+  name: nats
+  namespace: todo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nats
+  serviceName: nats
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: nats
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: component
+                operator: In
+                values:
+                - nats
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - args:
+        - --config
+        - /etc/nats-config/nats.conf
+        image: nats:1.0.4
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8222
+          initialDelaySeconds: 10
+          timeoutSeconds: 5
+        name: nats
+        ports:
+        - containerPort: 4222
+          name: client
+        - containerPort: 6222
+          name: cluster
+        - containerPort: 8222
+          name: monitor
+        volumeMounts:
+        - mountPath: /etc/nats-config
+          name: config-volume
+      volumes:
+      - configMap:
+          name: nats-config
+        name: config-volume
+---

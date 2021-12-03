@@ -1,0 +1,65 @@
+LAST SEEN   TYPE      REASON                  OBJECT                                  MESSAGE
+10m         Normal    ScalingReplicaSet       deployment/load                         Scaled up replica set load-7f97579865 to 1
+10m         Normal    Injected                deployment/load                         Linkerd sidecar proxy injected
+10m         Normal    ScalingReplicaSet       deployment/frontend                     Scaled up replica set frontend-6957977dc7 to 1
+10m         Normal    SuccessfulCreate        replicaset/load-7f97579865              Created pod: load-7f97579865-224ql
+10m         Normal    Scheduled               pod/load-7f97579865-224ql               Successfully assigned test/load-7f97579865-224ql to k3d-k3s-default-agent-0
+10m         Normal    Injected                deployment/frontend                     Linkerd sidecar proxy injected
+10m         Normal    SuccessfulCreate        replicaset/frontend-6957977dc7          Created pod: frontend-6957977dc7-4mjd6
+10m         Normal    ScalingReplicaSet       deployment/podinfo                      Scaled up replica set podinfo-7bfd46f477 to 1
+10m         Normal    Scheduled               pod/frontend-6957977dc7-4mjd6           Successfully assigned test/frontend-6957977dc7-4mjd6 to k3d-k3s-default-agent-0
+10m         Normal    Injected                deployment/podinfo                      Linkerd sidecar proxy injected
+10m         Normal    SuccessfulCreate        replicaset/podinfo-7bfd46f477           Created pod: podinfo-7bfd46f477-z67b9
+10m         Normal    Scheduled               pod/podinfo-7bfd46f477-z67b9            Successfully assigned test/podinfo-7bfd46f477-z67b9 to k3d-k3s-default-agent-1
+10m         Normal    Pulled                  pod/load-7f97579865-224ql               Container image "cr.l5d.io/linkerd/proxy-init:v1.4.0" already present on machine
+10m         Normal    Created                 pod/load-7f97579865-224ql               Created container linkerd-init
+10m         Normal    Started                 pod/load-7f97579865-224ql               Started container linkerd-init
+10m         Normal    Pulled                  pod/frontend-6957977dc7-4mjd6           Container image "cr.l5d.io/linkerd/proxy-init:v1.4.0" already present on machine
+10m         Normal    Created                 pod/frontend-6957977dc7-4mjd6           Created container linkerd-init
+10m         Normal    Pulled                  pod/podinfo-7bfd46f477-z67b9            Container image "cr.l5d.io/linkerd/proxy-init:v1.4.0" already present on machine
+10m         Normal    Created                 pod/podinfo-7bfd46f477-z67b9            Created container linkerd-init
+10m         Normal    Started                 pod/frontend-6957977dc7-4mjd6           Started container linkerd-init
+10m         Normal    Started                 pod/podinfo-7bfd46f477-z67b9            Started container linkerd-init
+10m         Normal    Pulled                  pod/load-7f97579865-224ql               Container image "cr.l5d.io/linkerd/proxy:stable-2.11.0" already present on machine
+10m         Normal    Pulled                  pod/frontend-6957977dc7-4mjd6           Container image "cr.l5d.io/linkerd/proxy:stable-2.11.0" already present on machine
+10m         Normal    Pulled                  pod/podinfo-7bfd46f477-z67b9            Container image "cr.l5d.io/linkerd/proxy:stable-2.11.0" already present on machine
+10m         Normal    Created                 pod/podinfo-7bfd46f477-z67b9            Created container linkerd-proxy
+10m         Normal    Created                 pod/load-7f97579865-224ql               Created container linkerd-proxy
+10m         Normal    Created                 pod/frontend-6957977dc7-4mjd6           Created container linkerd-proxy
+10m         Normal    Started                 pod/podinfo-7bfd46f477-z67b9            Started container linkerd-proxy
+10m         Normal    Started                 pod/frontend-6957977dc7-4mjd6           Started container linkerd-proxy
+10m         Normal    Started                 pod/load-7f97579865-224ql               Started container linkerd-proxy
+10m         Normal    IssuedLeafCertificate   serviceaccount/default                  issued certificate for default.test.serviceaccount.identity.linkerd.cluster.local until 2021-10-04 10:05:52 +0000 UTC: d55b519eaccbe47681348dcaa5742052
+10m         Normal    IssuedLeafCertificate   serviceaccount/default                  issued certificate for default.test.serviceaccount.identity.linkerd.cluster.local until 2021-10-04 10:05:52 +0000 UTC: 6fa0f588368b50c9465edb9b06200611
+10m         Normal    IssuedLeafCertificate   serviceaccount/default                  issued certificate for default.test.serviceaccount.identity.linkerd.cluster.local until 2021-10-04 10:05:52 +0000 UTC: 5dde28bcaab12291801e35dac205be88
+10m         Normal    Pulled                  pod/load-7f97579865-224ql               Container image "buoyantio/slow_cooker:1.2.0" already present on machine
+10m         Normal    Pulled                  pod/frontend-6957977dc7-4mjd6           Container image "nginx:alpine" already present on machine
+10m         Normal    Pulled                  pod/podinfo-7bfd46f477-z67b9            Container image "quay.io/stefanprodan/podinfo:1.7.0" already present on machine
+10m         Normal    Created                 pod/load-7f97579865-224ql               Created container slow-cooker
+10m         Normal    Created                 pod/podinfo-7bfd46f477-z67b9            Created container podinfod
+10m         Normal    Created                 pod/frontend-6957977dc7-4mjd6           Created container nginx
+10m         Normal    Started                 pod/podinfo-7bfd46f477-z67b9            Started container podinfod
+10m         Normal    Started                 pod/load-7f97579865-224ql               Started container slow-cooker
+10m         Normal    Started                 pod/frontend-6957977dc7-4mjd6           Started container nginx
+7m33s       Warning   Synced                  canary/podinfo                          podinfo-primary.test not ready: waiting for rollout to finish: observed deployment generation less than desired generation
+7m33s       Normal    ScalingReplicaSet       deployment/podinfo-primary              Scaled up replica set podinfo-primary-699f8f5576 to 1
+7m33s       Normal    Injected                deployment/podinfo-primary              Linkerd sidecar proxy injected
+7m33s       Normal    SuccessfulCreate        replicaset/podinfo-primary-699f8f5576   Created pod: podinfo-primary-699f8f5576-tk8jt
+7m33s       Normal    Scheduled               pod/podinfo-primary-699f8f5576-tk8jt    Successfully assigned test/podinfo-primary-699f8f5576-tk8jt to k3d-k3s-default-server-0
+7m33s       Normal    Pulled                  pod/podinfo-primary-699f8f5576-tk8jt    Container image "cr.l5d.io/linkerd/proxy-init:v1.4.0" already present on machine
+7m33s       Normal    Created                 pod/podinfo-primary-699f8f5576-tk8jt    Created container linkerd-init
+7m33s       Normal    Started                 pod/podinfo-primary-699f8f5576-tk8jt    Started container linkerd-init
+7m33s       Normal    Pulled                  pod/podinfo-primary-699f8f5576-tk8jt    Container image "cr.l5d.io/linkerd/proxy:stable-2.11.0" already present on machine
+7m33s       Normal    Created                 pod/podinfo-primary-699f8f5576-tk8jt    Created container linkerd-proxy
+7m33s       Normal    Started                 pod/podinfo-primary-699f8f5576-tk8jt    Started container linkerd-proxy
+7m33s       Normal    IssuedLeafCertificate   serviceaccount/default                  issued certificate for default.test.serviceaccount.identity.linkerd.cluster.local until 2021-10-04 10:08:23 +0000 UTC: 79a5aea65272bf15712720595766a592
+7m33s       Normal    Pulled                  pod/podinfo-primary-699f8f5576-tk8jt    Container image "quay.io/stefanprodan/podinfo:1.7.0" already present on machine
+7m33s       Normal    Created                 pod/podinfo-primary-699f8f5576-tk8jt    Created container podinfod
+7m33s       Normal    Started                 pod/podinfo-primary-699f8f5576-tk8jt    Started container podinfod
+7m24s       Warning   Synced                  canary/podinfo                          podinfo-primary.test not ready: waiting for rollout to finish: 0 of 1 updated replicas are available
+7m14s       Normal    Synced                  canary/podinfo                          all the metrics providers are available!
+7m14s       Normal    ScalingReplicaSet       deployment/podinfo                      Scaled down replica set podinfo-7bfd46f477 to 0
+7m14s       Normal    SuccessfulDelete        replicaset/podinfo-7bfd46f477           Deleted pod: podinfo-7bfd46f477-z67b9
+7m14s       Normal    Killing                 pod/podinfo-7bfd46f477-z67b9            Stopping container linkerd-proxy
+7m14s       Normal    Killing                 pod/podinfo-7bfd46f477-z67b9            Stopping container podinfod
+7m13s       Normal    Synced                  canary/podinfo                          Initialization done! podinfo.test

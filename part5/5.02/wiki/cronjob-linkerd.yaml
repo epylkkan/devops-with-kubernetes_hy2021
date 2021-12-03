@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: wiki-cronjob
+  namespace: todo
+spec:
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            linkerd.io/inject: enabled
+        spec:
+          containers:
+          - image: epylkkan/training_kubernetes_devops:209wiki
+            name: wiki-cronjob
+          restartPolicy: OnFailure
+  schedule: 48 17 * * *
+---

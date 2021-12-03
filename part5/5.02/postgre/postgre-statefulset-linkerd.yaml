@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgresql-db
+  namespace: todo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: postgresql-db
+  serviceName: postgresql-db-service
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: postgresql-db
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: postgres-db-config
+        - secretRef:
+            name: todopw                 
+        image: postgres:latest
+        name: postgresql-db
+        volumeMounts:
+        - mountPath: /data
+          name: postgresql-db-disk
+  volumeClaimTemplates:
+  - metadata:
+      name: postgresql-db-disk
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 25Gi

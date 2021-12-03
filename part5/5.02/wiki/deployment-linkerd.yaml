@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-wiki
+  namespace: todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-wiki
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: todo-wiki
+    spec:
+      containers:
+      - image: PROJECT/IMAGE
+        name: todo-wiki
+        resources:
+          limits:
+            cpu: 150m
+            memory: 100Mi
+---
